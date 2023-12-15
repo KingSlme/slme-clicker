@@ -43,14 +43,15 @@ class MainWindow:
         self.root.title("SlmeClicker")
         customtkinter.set_appearance_mode("dark")
         customtkinter.set_default_color_theme("dark-blue")
-        MainWindow.center_window(self.root, 400, 300)
+        MainWindow.center_window(self.root, 400, 200)
+        self.root.resizable(width=False, height=False)
         # Frame
         frame = customtkinter.CTkFrame(master=self.root)
         frame.pack(pady=10, padx=10, fill="both", expand=True)
         # Progress Bars
         self.average_cps_slider = customtkinter.CTkSlider(master=frame, width=300, height=25, progress_color="#0288f5", from_=0, to=20, hover=False, command=self.average_cps_slider_callback)
         self.average_cps_slider.grid(row=1, column=0, padx=10, pady=0)
-        self.variance_slider = customtkinter.CTkSlider(master=frame, width=300, height=25, progress_color="#0288f5", from_=0, to=10, hover=False, command=self.variance_slider_callback)
+        self.variance_slider = customtkinter.CTkSlider(master=frame, width=300, height=25, progress_color="#0288f5", from_=0, to=5, hover=False, command=self.variance_slider_callback)
         self.variance_slider.grid(row=3, column=0, padx=10, pady=0)
         # Labels
         average_cps_label = customtkinter.CTkLabel(master=frame, text="Average CPS:", font=customtkinter.CTkFont("Inter", 20))
@@ -61,8 +62,10 @@ class MainWindow:
         variance_label.grid(row=2, column=0, padx=20, pady=0, sticky="w")
         self.variance_value_label = customtkinter.CTkLabel(master=frame, text=self.variance_slider.get(), font=customtkinter.CTkFont("Inter", 20))
         self.variance_value_label.grid(row=3, column=1, padx=(0, 5), pady=0, sticky="w")
+        key_bind_label = customtkinter.CTkLabel(master=frame, text="Key:", font=customtkinter.CTkFont("Inter", 20))
+        key_bind_label.grid(row=4, column=0, padx=0, pady=(0, 5))
         # Entry
         self.entry = customtkinter.CTkEntry(master=frame, width=30)
-        self.entry.grid(row=4, column=0, padx=10, pady=0)
+        self.entry.grid(row=5, column=0, padx=0, pady=(0, 5))
         self.entry.bind("<Button-1>", self.on_entry_click)
         self.entry.bind("<KeyRelease>", self.on_entry_key)

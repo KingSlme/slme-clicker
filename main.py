@@ -11,6 +11,6 @@ if __name__ == "__main__":
     
     ac = autoclicker.Autoclicker()
     root.after(1, ac.autoclick, root)
-
+    root.after(1, ac.set_varied_delay, root)
     main_window = MainWindow(root, ac)
     root.mainloop()
