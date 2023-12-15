@@ -1,0 +1,2 @@
+# slme-clicker
+GUI autoclicker.
