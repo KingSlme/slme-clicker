@@ -23,11 +23,14 @@ class MainWindow:
         value = round(self.average_cps_slider.get(), 1)
         self.average_cps_value_label.configure(text=value)
         self.autoclicker.set_cps(value)
+        self.autoclicker.check_valid_CPS()
+        self.autoclicker.set_varied_delay()
 
     def variance_slider_callback(self, *_):
         value = round(self.variance_slider.get(), 1)
         self.variance_value_label.configure(text=value)
         self.autoclicker.set_variance(value)
+        self.autoclicker.set_varied_delay()
     
     def on_entry_click(self, event):
         self.entry.delete(0, "end")
